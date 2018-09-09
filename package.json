@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "readline-sync": "^1.4.9",
+    "request": "^2.88.0"
+  }
+}
