@@ -1,8 +1,8 @@
-var request = require('request');
+const request = require('request');
 var readline = require('readline-sync');
 
 
-var gitHubOrgName = readline.question("Type here GitHub organization name: ");
+const gitHubOrgName = readline.question("Type here GitHub organization name: ");
 
 var optionsObj = {
     uri: '',
@@ -16,7 +16,7 @@ Object.defineProperty(optionsObj, 'url', {
     }
 });
 
-optionsObj.uri = 'https://api.github.com/orgs/' + gitHubOrgName + '/repos';
+optionsObj.uri = `https://api.github.com/orgs/${gitHubOrgName}/repos`;
 
 function getRepos(options) {
     return new Promise(function(resolve, reject) {
@@ -24,14 +24,14 @@ function getRepos(options) {
             if (error) {
                 reject(error);
             } else {
-                resolve(body.slice(0, 3).map(function(repo) { return repo.name; }));
+                resolve(body.slice(0, 3).map(repo => repo.name));
             }
         });
     })
 }
 
 function getContributorsForRepo(options, repoName) {
-    options.uri = 'https://api.github.com/repos/'+ gitHubOrgName + '/' + repoName +'/contributors';
+    options.uri = `https://api.github.com/repos/${gitHubOrgName}/${repoName}/contributors`;
     return new Promise(function(resolve, reject) {
 
         request(options, function(error, response, body) {
@@ -44,7 +44,7 @@ function getContributorsForRepo(options, repoName) {
     })
 }
 
-function getContributors(gitHubOrgName) {
+function getContributors() {
     var resultObj = {};
 
     getRepos(optionsObj)
