@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "readline-sync": "^1.4.9",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
